@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>A* in interdependent binary tree</title>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+		<script src="js/array_prototype.js"></script>
+		<script src="js/string_to_array.js"></script>
+		<script src="js/tree_struct.js"></script>
+		<script src="js/algorithm.js"></script>
+		<script>
+			$(function(){
+				$("#input_holder").on("submit", function(event){
+					event.preventDefault();					
+					var array2D = $("#input_text").val().trim().to_2D_array().map(function(line){ return line.map(function(element){ return parseInt(element);}); });
+					
+					$("#result_max_sum").text(max_path_sum(array2D));
+					$("#result_bottom_up").text(bottom_up(array2D));
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<h1>Finding the maximum sum out of a given number pyramid</h1>
+		<form id="input_holder">
+			<label for="input_text">Input array:</label> | <input type="submit" value="calculate" /><br/>
+			
+			<textarea id="input_text" name="input_text">3
+7 4
+2 4 6
+8 5 9 3</textarea><br/>
+			<label>Max sum path: </label><span id="result_max_sum"></span> | <label>Bottom up: </label><span id="result_bottom_up"></span><br/>
+			
+			<p>If you want to build your own maximum sum pyramid,<br/>
+			just place a number on the first line then, on the second line,<br/>
+			put two numbers separated by a blank space, 3 numbers on the 3rd line<br/>
+			and so on, putting N numbers on the N<sup>th</sup> line.</p>
+			
+			<div><strong>Have fun!</strong></div>
+		</form>
+	</body>
+</html>
